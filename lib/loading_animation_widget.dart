@@ -77,6 +77,7 @@ class LoadingAnimationWidget {
     required double size,
     Color secondRingColor = Colors.teal,
     Color thirdRingColor = Colors.orange,
+    Duration duration = const Duration(milliseconds: 2000),
     Key? key,
   }) {
     return DiscreteCircle(
@@ -84,6 +85,7 @@ class LoadingAnimationWidget {
       size: size,
       secondCircleColor: secondRingColor,
       thirdCircleColor: thirdRingColor,
+      duration: duration,
       key: key,
     );
   }

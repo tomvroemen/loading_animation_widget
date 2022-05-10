@@ -7,20 +7,16 @@ class DiscreteCircle extends StatefulWidget {
   final Color color;
   final Color secondCircleColor;
   final Color thirdCircleColor;
-  const DiscreteCircle({
-    Key? key,
-    required this.color,
-    required this.size,
-    required this.secondCircleColor,
-    required this.thirdCircleColor,
-  }) : super(key: key);
+  final Duration duration;
+  const DiscreteCircle(
+      {Key? key, required this.color, required this.size, required this.secondCircleColor, required this.thirdCircleColor, required this.duration})
+      : super(key: key);
 
   @override
   State<DiscreteCircle> createState() => _DiscreteCircleState();
 }
 
-class _DiscreteCircleState extends State<DiscreteCircle>
-    with SingleTickerProviderStateMixin {
+class _DiscreteCircleState extends State<DiscreteCircle> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override
@@ -28,7 +24,7 @@ class _DiscreteCircleState extends State<DiscreteCircle>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000),
+      duration: widget.duration,
     )..repeat();
   }
 
@@ -128,8 +124,7 @@ class _DiscreteCircleState extends State<DiscreteCircle>
                   strokeWidth: strokeWidth,
                   startAngle: -math.pi / 2,
                   // endAngle: 1.94 * math.pi,
-                  endAngle: Tween<double>(
-                          begin: math.pi / (size * size), end: 1.94 * math.pi)
+                  endAngle: Tween<double>(begin: math.pi / (size * size), end: 1.94 * math.pi)
                       .animate(
                         CurvedAnimation(
                           parent: _animationController,
